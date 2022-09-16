@@ -17,7 +17,7 @@ namespace Ship.Controls
 
         private void FixedUpdate()
         {
-            if (Inputs.inputs.accelerate)
+            if (Inputs.inputs.Accelerate)
             {
                 RB.AddForce(transform.forward);
             }
