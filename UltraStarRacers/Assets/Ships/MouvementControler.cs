@@ -7,12 +7,11 @@ namespace Ship.Controls
 {
     public class MouvementControler : MonoBehaviour
     {
-        private InputManager Inputs;
+        [SerializeField] private InputManager Inputs;
         private Rigidbody RB;
         
         void Start()
         {
-            Inputs = GetComponent<InputManager>();
             RB = GetComponentInChildren<Rigidbody>();
         }
 

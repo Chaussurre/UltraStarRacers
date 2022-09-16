@@ -24,12 +24,21 @@ namespace Ship.Controls
         }
 
         public InputsState inputs;
-        
-        void Update()
-        {
-            inputs = GetInputs();
-        }
 
-        protected abstract InputsState GetInputs();
+        public void ResetAction(int action)
+        {
+            switch (action)
+            {
+                case 1:
+                    inputs.Action1 = ActionButtonState.NotPressed;
+                    break;
+                case 2:
+                    inputs.Action2 = ActionButtonState.NotPressed;
+                    break;
+                case 3:
+                    inputs.Action3 = ActionButtonState.NotPressed;
+                    break;
+            }
+        }
     }
 }
