@@ -2,7 +2,8 @@
     "name": "ShipCameraUI",
     "rootNamespace": "ship.CameraUI",
     "references": [
-        ""
+        "",
+        "ShipControl"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

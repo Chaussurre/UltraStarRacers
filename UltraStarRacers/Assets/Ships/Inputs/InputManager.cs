@@ -11,7 +11,7 @@ namespace Ship.Controls
         [System.Serializable]
         public struct InputsState
         {
-            public double Rotate;
+            public float Rotate;
             public bool Accelerate;
             public bool Brake;
             public bool Action1;

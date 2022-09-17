@@ -5,8 +5,7 @@ using UnityEngine;
 
 namespace Ship.Controls
 {
-    [Serializable]
-    public struct ShipsStats
+    public class ShipsStats : MonoBehaviour
     {
         [Tooltip("In unit per seconds")]
         public float SpeedMax;
