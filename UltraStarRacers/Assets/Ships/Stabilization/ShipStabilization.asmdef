@@ -1,0 +1,14 @@
+{
+    "name": "ShipStabilization",
+    "rootNamespace": "ship.stabilization",
+    "references": ["GUID:a96a04501cd4a5c4f8de72be64f91108"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
