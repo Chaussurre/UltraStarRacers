@@ -30,7 +30,7 @@ namespace Ship.Controls
                 var forwardSpeed = Vector3.Project(RB.velocity, transform.forward).magnitude;
                 if (inputs.Brake)
                     Brake();
-                else if (forwardSpeed < Stats.SpeedMax)
+                else if (forwardSpeed > Stats.SpeedMax)
                     NaturalSlow();
                 else
                     NaturalSideSlow();
