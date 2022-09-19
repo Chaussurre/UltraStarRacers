@@ -16,6 +16,7 @@ namespace Map.generation
         [SerializeField] private int AngleLockMin;
         [SerializeField] private int AngleLockMax;
         [SerializeField] private float PathWidth;
+        [SerializeField] private float WallHeight;
 
         [SerializeField] private MeshCreation MeshCreation;
         
@@ -67,7 +68,7 @@ namespace Map.generation
                 position += direction * distanceBetweenPoints;
             }
 
-            MeshCreation.CreateGround(points, PathWidth);
+            MeshCreation.CreateMesh(points, PathWidth, WallHeight);
         }
 
         private bool CheckValidInfos()

@@ -72,7 +72,7 @@ namespace Ship.Controls
         {
             Quaternion destination = Quaternion.LookRotation(rotateLeft ? -transform.right : transform.right,
                 transform.up);
-            RB.MoveRotation(Quaternion.RotateTowards(RB.rotation, destination, 
+            transform.rotation = (Quaternion.RotateTowards(RB.rotation, destination, 
                 Stats.RotateSpeed * Time.fixedDeltaTime));
         }
     }
