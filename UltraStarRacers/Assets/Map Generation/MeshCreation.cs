@@ -5,16 +5,14 @@ using UnityEngine;
 
 namespace Map.generation
 {
-    public class GroundCreation : MonoBehaviour
+    public class MeshCreation : MonoBehaviour
     {
-        public MapTraceGeneration MapTrace;
-
         public MeshFilter MeshFilter;
         private Mesh mesh;
-        [SerializeField] private float Width;
 
         private List<Vector3> MeshPoints = new List<Vector3>();
         private List<int> MeshTriangles = new List<int>();
+
         
         private void Start()
         {
@@ -22,15 +20,8 @@ namespace Map.generation
             MeshFilter.mesh = mesh;
         }
 
-        private void Update()
-        {            
-            CreateGround();
-        }
-
-        private void CreateGround()
-        {
-            var points = MapTrace.GetPoints();
-            
+        public void CreateGround(List<Vector3> points, float Width)
+        {   
             if (points.Count <= 2)
                 return;
 
@@ -38,18 +29,18 @@ namespace Map.generation
             MeshTriangles.Clear();
             mesh.Clear();
 
-            CreatePairPoints(points[0], (points[1] - points[0]).normalized);
+            CreatePairPoints(points[0], (points[1] - points[0]).normalized, Width);
             for (int i = 1; i < points.Count - 1; i++)
             {
-                CreatePairPoints(points[i], (points[i + 1] - points[i - 1]).normalized);
+                CreatePairPoints(points[i], (points[i + 1] - points[i - 1]).normalized, Width);
             }
-            CreatePairPoints(points[^1], (points[^1] - points[^2]).normalized, false);
+            CreatePairPoints(points[^1], (points[^1] - points[^2]).normalized, Width, false);
 
             mesh.vertices = MeshPoints.ToArray();
             mesh.triangles = MeshTriangles.ToArray();
         }
 
-        void CreatePairPoints(Vector3 middle, Vector3 direction, bool addTriangles = true)
+        void CreatePairPoints(Vector3 middle, Vector3 direction, float Width, bool addTriangles = true)
         {
             var cross = Vector3.Cross(direction, Vector3.up) * Width;
             var count = MeshPoints.Count;

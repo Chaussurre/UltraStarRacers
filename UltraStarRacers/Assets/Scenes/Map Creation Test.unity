@@ -271,10 +271,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb8650df5ae99f48bd05ed4908a6bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points:
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 2}
-  - {x: 0, y: 0, z: 3}
+  PointCount: 300
+  distanceBetweenPoints: 2
+  AngleBetweenPoints: 5
+  AngleLockMin: 10
+  AngleLockMax: 60
+  PathWidth: 10
+  MeshCreation: {fileID: 1255584818}
+  generated: 0
 --- !u!114 &1255584818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,9 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b9878ec7ed7aa4c843d98776efe987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MapTrace: {fileID: 1255584817}
   MeshFilter: {fileID: 1563288154}
-  Width: 0.5
 --- !u!4 &1255584819
 Transform:
   m_ObjectHideFlags: 0
