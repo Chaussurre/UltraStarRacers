@@ -140,7 +140,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!64 &294946074
 MeshCollider:
@@ -326,10 +326,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 633805668, guid: fbee910547000134b96d18137248d5dc, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: Keyboard
-      objectReference: {fileID: 0}
     - target: {fileID: 176702227133615829, guid: fbee910547000134b96d18137248d5dc,
         type: 3}
       propertyPath: m_Name
@@ -390,10 +386,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7591711638521325348, guid: fbee910547000134b96d18137248d5dc,
+    - target: {fileID: 2790898464896628482, guid: fbee910547000134b96d18137248d5dc,
         type: 3}
-      propertyPath: m_AllowMSAA
-      value: 0
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7591711638521325348, guid: fbee910547000134b96d18137248d5dc,
         type: 3}
@@ -916,11 +912,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ship (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 176702227133615829, guid: fbee910547000134b96d18137248d5dc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 664304111518323823, guid: fbee910547000134b96d18137248d5dc,
         type: 3}
       propertyPath: m_RootOrder
@@ -976,10 +967,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2113202329254366695, guid: fbee910547000134b96d18137248d5dc,
+    - target: {fileID: 2790898464896628482, guid: fbee910547000134b96d18137248d5dc,
         type: 3}
-      propertyPath: m_Antialiasing
-      value: 0
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2790898464896628482, guid: fbee910547000134b96d18137248d5dc,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7591711638521325348, guid: fbee910547000134b96d18137248d5dc,
         type: 3}
@@ -1007,7 +1003,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2014003429
 Transform:
@@ -1035,7 +1031,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2120463384}
   m_Layer: 0
-  m_Name: GameRules
+  m_Name: Game Rules
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
