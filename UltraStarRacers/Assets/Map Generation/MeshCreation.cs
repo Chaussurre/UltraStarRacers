@@ -30,7 +30,7 @@ namespace Map.generation
         private List<int> WallRightTriangles = new List<int>();
 
         
-        private void Start()
+        private void Awake()
         {
             meshGround = new Mesh();
             meshWallLeft = new Mesh();
@@ -41,28 +41,32 @@ namespace Map.generation
             WallRightMeshFilter.mesh = meshWallRight;
         }
 
-        public void CreateMesh(List<Vector3> points, float Width, float Height)
-        {   
-            if (points.Count <= 2)
-                return;
-
-            GroundPoints.Clear();
-            GroundTriangles.Clear();
-            meshGround.Clear();
-
-            CreatePairPoints(points[0], Vector3.forward, Width, Height);
-            CreateTriangles();
-            for (int i = 1; i < points.Count - 1; i++)
+        public void CreateMesh(List<Vector3> points, MapZone zone, int StartIndex)
+        {
+            int endIndex = Mathf.Min(zone.PointCount + StartIndex, points.Count - 1);
+            
+            if (StartIndex == 0)
             {
-                CreatePairPoints(points[i], (points[i + 1] - points[i - 1]).normalized, Width, Height);
+                CreatePairPoints(points[0], Vector3.forward, zone);
+                CreateTriangles();
+                StartIndex++;
+            }
+
+            for (int i = StartIndex; i < endIndex - 1; i++)
+            {
+                CreatePairPoints(points[i], (points[i + 1] - points[i - 1]).normalized, zone);
                 CreateTriangles();
             }
-            CreatePairPoints(points[^1], (points[^1] - points[^2]).normalized, Width, Height);
 
+        }
+
+        public void FinishMesh(List<Vector3> points, MapZone zone)
+        { 
+            CreatePairPoints(points[^1], points[^1] - points[^2], zone);
             meshGround.vertices = GroundPoints.ToArray();
             meshGround.triangles = GroundTriangles.ToArray();
             GroundCollider.sharedMesh = meshGround;
-            
+
             meshWallLeft.vertices = WallLeftPoints.ToArray();
             meshWallLeft.triangles = WallLeftTriangles.ToArray();
             WallLeftCollider.sharedMesh = meshWallLeft;
@@ -72,18 +76,18 @@ namespace Map.generation
             WallRightCollider.sharedMesh = meshWallRight;
         }
 
-        void CreatePairPoints(Vector3 middle, Vector3 direction, float Width, float Height)
+        void CreatePairPoints(Vector3 middle, Vector3 direction, MapZone zone)
         {
-            var cross = Vector3.Cross(direction, Vector3.up) * Width;
+            var cross = Vector3.Cross(direction, Vector3.up) * zone.PathWidth;
 
             GroundPoints.Add(middle + cross);
             GroundPoints.Add(middle - cross);
             
             WallLeftPoints.Add(middle + cross);
-            WallLeftPoints.Add(middle + cross + Vector3.up * Height);
+            WallLeftPoints.Add(middle + cross + Vector3.up * zone.WallHeight);
             
             WallRightPoints.Add(middle - cross);
-            WallRightPoints.Add(middle - cross + Vector3.up * Height);
+            WallRightPoints.Add(middle - cross + Vector3.up * zone.WallHeight);
         }
 
         void CreateTriangles()

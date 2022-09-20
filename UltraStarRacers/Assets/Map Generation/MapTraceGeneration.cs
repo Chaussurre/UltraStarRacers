@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Animations;
+using Random = UnityEngine.Random;
 
 namespace Map.generation
 {
@@ -10,49 +12,80 @@ namespace Map.generation
     {
         private List<Vector3> points = new();
 
-        [SerializeField] private int PointCount;
-        [SerializeField] private float distanceBetweenPoints;
-        [SerializeField] private float AngleBetweenPoints;
-        [SerializeField] private int AngleLockMin;
-        [SerializeField] private int AngleLockMax;
-        [SerializeField] private float PathWidth;
-        [SerializeField] private float WallHeight;
-
         [SerializeField] private MeshCreation MeshCreation;
-        
 
-        public bool generated;
+        [SerializeField] private float TotalDistance;
 
-        private void Update()
+        [SerializeField] private MapZone firstZone;
+
+        [Serializable]
+        struct Zone
         {
-            if(!generated)
-               GenerateTrace(); 
+            public MapZone zone;
+            public float weight;
+        }
+        
+        [SerializeField] private List<Zone> Zones = new();
+
+
+        private void Start()
+        {
+            GenerateTrace();
         }
 
+        [ContextMenu("Generate map")]
         private void GenerateTrace()
         {
             points.Clear();
-            if (!CheckValidInfos())
+
+            float distance = 0;
+            
+            float angle = 0;
+            var position = Vector3.zero;
+            int index = 0;
+            
+            GenerateZone(firstZone, ref angle, ref position, ref index);
+            
+            while (distance < TotalDistance)
             {
-                Debug.LogError("Map generation infos can intersect");
-                return;
+                var zone = ChooseRandomZone();
+                distance += zone.distanceBetweenPoints * zone.PointCount;
+                GenerateZone(zone, ref angle, ref position, ref index);
+            }
+            
+            MeshCreation.FinishMesh(points, firstZone);
+        }
+
+        MapZone ChooseRandomZone()
+        {
+            float totalWeight = Zones.Sum(x => x.weight);
+            float weightSelector = Random.Range(0, totalWeight);
+            int i = 0;
+            while (weightSelector > Zones[i].weight)
+            {
+                i++;
+                weightSelector -= Zones[i].weight;
             }
 
-            generated = true;
+            if (i >= Zones.Count)
+                i = Zones.Count - 1;
 
-            float angle = 0;
+            return Zones[i].zone;
+        }
+        
+        private void GenerateZone(MapZone zone, ref float angle, ref Vector3 position, ref int index)
+        {
             float angleDelta = 0;
-            var position = Vector3.zero;
             int ALock = 0;
             
-            for (int i = 0; i < PointCount; i++)
+            for (int i = 0; i < zone.PointCount; i++)
             {
                 points.Add(position);
 
                 if (ALock <= 0)
                 {
-                    angleDelta = UnityEngine.Random.Range(-AngleBetweenPoints, AngleBetweenPoints);
-                    ALock = UnityEngine.Random.Range(AngleLockMin, AngleLockMax);
+                    angleDelta = UnityEngine.Random.Range(-zone.AngleBetweenPoints, zone.AngleBetweenPoints);
+                    ALock = UnityEngine.Random.Range(zone.AngleLockMin, zone.AngleLockMax);
                 }
                 else ALock--;
 
@@ -65,23 +98,11 @@ namespace Map.generation
                 }
 
                 var direction = Quaternion.AngleAxis(angle, Vector3.up) *  Vector3.forward;
-                position += direction * distanceBetweenPoints;
+                position += direction * zone.distanceBetweenPoints;
             }
 
-            MeshCreation.CreateMesh(points, PathWidth, WallHeight);
-        }
-
-        private bool CheckValidInfos()
-        {
-            float maxAngle = 90 - Mathf.Acos(distanceBetweenPoints / (2 * PathWidth)) * Mathf.Rad2Deg;
-            Debug.Log($"Max Angle : {maxAngle}");
-            return AngleBetweenPoints < maxAngle ;
-        }
-
-
-        public List<Vector3> GetPoints()
-        {
-            return points;
+            MeshCreation.CreateMesh(points, zone, index);
+            index += zone.PointCount;
         }
     }
 }
