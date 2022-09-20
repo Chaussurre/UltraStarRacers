@@ -15,6 +15,7 @@ namespace Map.generation
         public int AngleLockMax;
         public float PathWidth;
         public float WallHeight;
+        public int GrassPerStep;
         
         [ContextMenu("Check validity")]
         private void CheckValidInfos()

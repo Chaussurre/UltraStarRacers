@@ -957,7 +957,7 @@ MonoBehaviour:
   Height: 0.1
   StabilizingSpeed: 20
   VerticalDampening: 0
-  InverseStabilizationThreshold: 0
+  InverseStabilizationThreshold: 1
 --- !u!114 &3070109443616692851
 MonoBehaviour:
   m_ObjectHideFlags: 0

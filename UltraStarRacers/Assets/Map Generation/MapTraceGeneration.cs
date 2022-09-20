@@ -12,7 +12,9 @@ namespace Map.generation
     {
         private List<Vector3> points = new();
 
+        [SerializeField] private GameObject EndArena;
         [SerializeField] private MeshCreation MeshCreation;
+        [SerializeField] private MapGrassManager GrassManager;
 
         [SerializeField] private float TotalDistance;
 
@@ -52,8 +54,11 @@ namespace Map.generation
                 distance += zone.distanceBetweenPoints * zone.PointCount;
                 GenerateZone(zone, ref angle, ref position, ref index);
             }
-            
+            GenerateZone(firstZone, ref angle, ref position, ref index);
             MeshCreation.FinishMesh(points, firstZone);
+            
+            var direction = Quaternion.AngleAxis(angle, Vector3.up) *  Vector3.forward;
+            EndArena.transform.SetPositionAndRotation(points[^1], Quaternion.LookRotation(-direction));
         }
 
         MapZone ChooseRandomZone()
@@ -102,6 +107,7 @@ namespace Map.generation
             }
 
             MeshCreation.CreateMesh(points, zone, index);
+            GrassManager.GenerateGrass(points, zone, index);
             index += zone.PointCount;
         }
     }

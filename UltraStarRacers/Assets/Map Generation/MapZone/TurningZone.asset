@@ -19,3 +19,4 @@ MonoBehaviour:
   AngleLockMax: 30
   PathWidth: 4
   WallHeight: 3
+  GrassPerStep: 3

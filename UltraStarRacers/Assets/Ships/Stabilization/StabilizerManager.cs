@@ -16,7 +16,7 @@ public class StabilizerManager : MonoBehaviour
     [SerializeField] private float Height;
     [SerializeField] private float StabilizingSpeed;
     [SerializeField] private float VerticalDampening;
-    [FormerlySerializedAs("InverseStabilizationSpeed")] [SerializeField, Range(0, 1)] private float InverseStabilizationThreshold;
+    [SerializeField, Range(0, 1)] private float InverseStabilizationThreshold;
 
 
     private void FixedUpdate()

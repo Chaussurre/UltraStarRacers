@@ -17,5 +17,6 @@ MonoBehaviour:
   AngleBetweenPoints: 0
   AngleLockMin: 9
   AngleLockMax: 10
-  PathWidth: 1
+  PathWidth: 1.5
   WallHeight: 2
+  GrassPerStep: 2
