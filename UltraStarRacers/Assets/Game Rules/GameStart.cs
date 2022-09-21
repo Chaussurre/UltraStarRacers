@@ -22,13 +22,14 @@ namespace Game.Rules
         public TMP_Text Text;
         public string StartText;
 
-        //public GameObject Door;
-        //float positionStart;
-        //public float positionEnd;
+        public GameObject Door;
+        float positionStart;
+        public float positionEnd;
+        public float DoorTimer;
         
         IEnumerator Start()
         {
-            //positionStart = Door.transform.position.y;
+            positionStart = Door.transform.localPosition.z;
             shipsControllers = FindObjectsOfType<MouvementController>();
             shipsInput = FindObjectsOfType<PlayerInputManager>();
             foreach (var controller in shipsControllers)
@@ -69,10 +70,18 @@ namespace Game.Rules
                 int counted = Mathf.FloorToInt(timer);
                 Text.text = (counter - counted).ToString();
                 Text.fontSize = Mathf.Lerp(TextSizeMin, TextSizeMax, timer - counted);
+                SetDoorPosition(counter - timer);
                 yield return null;
             }
 
+            SetDoorPosition(0);
             Text.text = StartText;
+        }
+
+        private void SetDoorPosition(float timer)
+        {
+            var lerp = Mathf.Clamp01((DoorTimer - timer) / DoorTimer);
+            Door.transform.localPosition = Vector3.forward * Mathf.Lerp(positionStart, positionEnd, lerp);
         }
 
         IEnumerator PreGameCameraRotateRoutine()
