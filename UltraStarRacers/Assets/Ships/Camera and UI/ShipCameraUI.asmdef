@@ -2,8 +2,9 @@
     "name": "ShipCameraUI",
     "rootNamespace": "ship.CameraUI",
     "references": [
-        "",
-        "ShipControl"
+        "Unity.TextMeshPro",
+        "ShipControl",
+        "MapGeneration"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

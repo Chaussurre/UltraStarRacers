@@ -10,7 +10,7 @@ namespace Map.generation
 {
     public class MapTraceGeneration : MonoBehaviour
     {
-        private List<Vector3> points = new();
+        public readonly List<Vector3> points = new();
 
         [SerializeField] private GameObject EndArena;
         [SerializeField] private MeshCreation MeshCreation;

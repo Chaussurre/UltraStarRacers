@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Ship.Controls
 {
-    public class MouvementControler : MonoBehaviour
+    public class MouvementController : MonoBehaviour
     {
         [SerializeField] private InputManager Inputs;
         private Rigidbody RB;

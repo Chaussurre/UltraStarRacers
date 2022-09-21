@@ -9,7 +9,7 @@ namespace Game.Rules
 {
     public class GameStart : MonoBehaviour
     {
-        private MouvementControler[] shipsControllers;
+        private MouvementController[] shipsControllers;
         private PlayerInputManager[] shipsInput;
         private List<Camera> shipsCamera = new List<Camera>(2);
 
@@ -29,7 +29,7 @@ namespace Game.Rules
         IEnumerator Start()
         {
             //positionStart = Door.transform.position.y;
-            shipsControllers = FindObjectsOfType<MouvementControler>();
+            shipsControllers = FindObjectsOfType<MouvementController>();
             shipsInput = FindObjectsOfType<PlayerInputManager>();
             foreach (var controller in shipsControllers)
                 shipsCamera.Add(controller.GetComponentInChildren<Camera>());
