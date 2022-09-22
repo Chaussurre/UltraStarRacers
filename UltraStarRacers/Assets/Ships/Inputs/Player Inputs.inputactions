@@ -106,6 +106,17 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Left Right",
+                    "id": "e4a1626b-32ed-4995-85aa-40ebc95c00bd",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "",
                     "id": "c915e22c-d944-4ad2-95fa-78f104444d41",
                     "path": "<Gamepad>/rightTrigger",

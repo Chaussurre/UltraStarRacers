@@ -16,6 +16,7 @@ namespace Map.generation
         private List<int> GroundTriangles = new List<int>();
 
         public MeshFilter WallLeftMeshFilter;
+        public MeshRenderer WallLeftMeshRenderer;
         public MeshCollider WallLeftCollider;
         private Mesh meshWallLeft;
 
@@ -23,6 +24,7 @@ namespace Map.generation
         private List<int> WallLeftTriangles = new List<int>();
         
         public MeshFilter WallRightMeshFilter;
+        public MeshRenderer WallRightMeshRenderer;
         public MeshCollider WallRightCollider;
         private Mesh meshWallRight;
 
@@ -60,7 +62,7 @@ namespace Map.generation
 
         }
 
-        public void FinishMesh(List<Vector3> points, MapZone zone)
+        public void FinishMesh(List<Vector3> points, MapZone zone, Color WallColor)
         { 
             CreatePairPoints(points[^1], points[^1] - points[^2], zone);
             meshGround.vertices = GroundPoints.ToArray();
@@ -74,6 +76,9 @@ namespace Map.generation
             meshWallRight.vertices = WallRightPoints.ToArray();
             meshWallRight.triangles = WallRightTriangles.ToArray();
             WallRightCollider.sharedMesh = meshWallRight;
+
+            WallLeftMeshRenderer.material.color = WallColor;
+            WallRightMeshRenderer.material.color = WallColor;
         }
 
         void CreatePairPoints(Vector3 middle, Vector3 direction, MapZone zone)

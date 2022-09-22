@@ -7,14 +7,18 @@ namespace Ship.Controls
 {
     public class MouvementController : MonoBehaviour
     {
-        [SerializeField] private InputManager Inputs;
+        public bool TopPlayer;
+        
+        public InputManager Inputs;
         private Rigidbody RB;
         
         [SerializeField] private ShipsStats Stats;
         
-        void Start()
+        void Awake()
         {
             RB = GetComponentInChildren<Rigidbody>();
+            var device = DeviceManager.Instance;
+            Inputs = (TopPlayer ? device.TopPlayer : device.BottomPlayer).GetComponent<InputManager>();
         }
 
         private void FixedUpdate()

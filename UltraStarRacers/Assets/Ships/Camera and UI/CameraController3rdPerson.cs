@@ -9,7 +9,7 @@ namespace Ship.CameraUI
 {
     public class CameraController3rdPerson : MonoBehaviour
     {
-        public InputManager Inputs;
+        InputManager Inputs;
         public ShipsStats Stats;
         public Rigidbody Rigidbody;
         
@@ -20,6 +20,11 @@ namespace Ship.CameraUI
         private float RotationAngleMax;
 
         [SerializeField] private float RotationSpeed;
+
+        private void Start()
+        {
+            Inputs = GetComponentInParent<MouvementController>().Inputs;
+        }
 
         private void FixedUpdate()
         {

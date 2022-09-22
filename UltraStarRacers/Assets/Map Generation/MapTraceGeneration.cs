@@ -20,18 +20,12 @@ namespace Map.generation
 
         [SerializeField] private MapZone firstZone;
 
-        [Serializable]
-        struct Zone
-        {
-            public MapZone zone;
-            public float weight;
-        }
+        public LevelDescription levelDescription;
         
-        [SerializeField] private List<Zone> Zones = new();
-
-
         private void Start()
         {
+            levelDescription = FindObjectOfType<LevelSelectionManager>().selected;
+            TotalDistance = levelDescription.Distance;
             GenerateTrace();
         }
 
@@ -55,7 +49,7 @@ namespace Map.generation
                 GenerateZone(zone, ref angle, ref position, ref index);
             }
             GenerateZone(firstZone, ref angle, ref position, ref index);
-            MeshCreation.FinishMesh(points, firstZone);
+            MeshCreation.FinishMesh(points, firstZone, levelDescription.WallColor);
             
             var direction = Quaternion.AngleAxis(angle, Vector3.up) *  Vector3.forward;
             EndArena.transform.SetPositionAndRotation(points[^1], Quaternion.LookRotation(-direction));
@@ -63,6 +57,7 @@ namespace Map.generation
 
         MapZone ChooseRandomZone()
         {
+            var Zones = levelDescription.Zones;
             float totalWeight = Zones.Sum(x => x.weight);
             float weightSelector = Random.Range(0, totalWeight);
             int i = 0;

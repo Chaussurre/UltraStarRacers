@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 049b5e2daae6b9b46a345b4c7c552699,
+    type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -793,12 +794,12 @@ PrefabInstance:
     - target: {fileID: 176702227133615829, guid: fbee910547000134b96d18137248d5dc,
         type: 3}
       propertyPath: m_Name
-      value: ship
+      value: ship Top
       objectReference: {fileID: 0}
     - target: {fileID: 664304111518323823, guid: fbee910547000134b96d18137248d5dc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 664304111518323823, guid: fbee910547000134b96d18137248d5dc,
         type: 3}
@@ -854,6 +855,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NormalizedViewPortRect.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074234939583894484, guid: fbee910547000134b96d18137248d5dc,
+        type: 3}
+      propertyPath: TopPlayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7591711638521325348, guid: fbee910547000134b96d18137248d5dc,
         type: 3}
@@ -1192,11 +1198,7 @@ MonoBehaviour:
   GrassManager: {fileID: 1255584820}
   TotalDistance: 500
   firstZone: {fileID: 11400000, guid: e2cfa308536b4534eb0150fd1c19d6d9, type: 2}
-  Zones:
-  - zone: {fileID: 11400000, guid: ea858b52424d7fa4db1367ef71c4a983, type: 2}
-    weight: 1
-  - zone: {fileID: 11400000, guid: 281d73e3bd778c4488d3133200aee01f, type: 2}
-    weight: 1
+  levelDescription: {fileID: 0}
 --- !u!114 &1255584818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1212,8 +1214,10 @@ MonoBehaviour:
   GroundMeshFilter: {fileID: 1563288154}
   GroundCollider: {fileID: 1563288155}
   WallLeftMeshFilter: {fileID: 1588926415}
+  WallLeftMeshRenderer: {fileID: 1588926414}
   WallLeftCollider: {fileID: 1588926416}
   WallRightMeshFilter: {fileID: 929189849}
+  WallRightMeshRenderer: {fileID: 929189848}
   WallRightCollider: {fileID: 929189850}
 --- !u!4 &1255584819
 Transform:
@@ -1570,12 +1574,12 @@ PrefabInstance:
     - target: {fileID: 176702227133615829, guid: fbee910547000134b96d18137248d5dc,
         type: 3}
       propertyPath: m_Name
-      value: ship (1)
+      value: ship Bottom
       objectReference: {fileID: 0}
     - target: {fileID: 664304111518323823, guid: fbee910547000134b96d18137248d5dc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 664304111518323823, guid: fbee910547000134b96d18137248d5dc,
         type: 3}
