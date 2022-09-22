@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac1a58b9f0e1e04d84a681cd3970945, type: 3}
+  m_Name: Very Easy
+  m_EditorClassIdentifier: 
+  Zones:
+  - zone: {fileID: 11400000, guid: c15304c729e24c24b90bb32ed09cb601, type: 2}
+    weight: 1
+  - zone: {fileID: 11400000, guid: ea858b52424d7fa4db1367ef71c4a983, type: 2}
+    weight: 1
+  - zone: {fileID: 11400000, guid: 2201c28da8ea914408a3c12468efcc3f, type: 2}
+    weight: 2
+  Name: Very Easy
+  Description: Some turns and large corridors.
+  Distance: 400
+  WallColor: {r: 0.28835884, g: 0.9433962, b: 0.67509913, a: 1}

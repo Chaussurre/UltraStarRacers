@@ -63,8 +63,8 @@ namespace Map.generation
             int i = 0;
             while (weightSelector > Zones[i].weight)
             {
-                i++;
                 weightSelector -= Zones[i].weight;
+                i++;
             }
 
             if (i >= Zones.Count)

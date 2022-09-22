@@ -29,6 +29,12 @@ namespace Ship.Controls
             DontDestroyOnLoad(gameObject);
         }
 
+        public void OnListenToDevices()
+        {
+            OnTopPlayer?.Invoke(TopPlayer);
+            OnBottomPlayer?.Invoke(BottomPlayer);
+        }
+        
         public void OnAddPlayer(PlayerInput player)
         {
             DontDestroyOnLoad(player.gameObject);

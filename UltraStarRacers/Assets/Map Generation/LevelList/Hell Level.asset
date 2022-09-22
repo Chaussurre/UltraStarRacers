@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Zones:
   - zone: {fileID: 11400000, guid: 32e5fc224a32c86478e0b4536d374aba, type: 2}
+    weight: 5
+  - zone: {fileID: 11400000, guid: acca8ecbe2c439e4299c1f2797f8f184, type: 2}
     weight: 1
   Name: Ultra Hell
   Description: Why would you choose this ?

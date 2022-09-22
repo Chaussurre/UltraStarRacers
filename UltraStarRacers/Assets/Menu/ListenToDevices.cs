@@ -1,16 +1,22 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Ship.Controls;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace UI.Menu
 {
     public class ListenToDevices : MonoBehaviour
     {
-        public PlayerInputManager InputManager;
+        public UnityEngine.InputSystem.PlayerInputManager InputManager;
+        
+        private void OnEnable()
+        {
+            InputManager.EnableJoining();
+            Invoke(nameof(InnitDevices), 0.1f);
+        }
 
-        private void OnEnable() => InputManager.EnableJoining();
+        void InnitDevices()
+        {
+            DeviceManager.Instance.OnListenToDevices();
+        }
         private void OnDisable() => InputManager.DisableJoining();
     }
 }

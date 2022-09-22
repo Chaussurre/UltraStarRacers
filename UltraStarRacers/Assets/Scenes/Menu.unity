@@ -243,58 +243,10 @@ MonoBehaviour:
   BottomPlayer: {fileID: 0}
   OnTopPlayer:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 563575655}
-        m_TargetAssemblyTypeName: UI.Menu.ShowDevice, MainMenu
-        m_MethodName: OnDeviceConnected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1424808643}
-        m_TargetAssemblyTypeName: UI.Menu.PlayButton, MainMenu
-        m_MethodName: SetTopReady
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnBottomPlayer:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1984824504}
-        m_TargetAssemblyTypeName: UI.Menu.ShowDevice, MainMenu
-        m_MethodName: OnDeviceConnected
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1424808643}
-        m_TargetAssemblyTypeName: UI.Menu.PlayButton, MainMenu
-        m_MethodName: SetBottomReady
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &60098651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,6 +1293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: {fileID: 1252418741}
+  Top: 1
 --- !u!1 &575701329
 GameObject:
   m_ObjectHideFlags: 0
@@ -4276,6 +4229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: {fileID: 1864079574}
+  Top: 0
 --- !u!1 &2111150953
 GameObject:
   m_ObjectHideFlags: 0
@@ -4390,8 +4344,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Levels:
+  - {fileID: 11400000, guid: 6d44f7f4f15a515419310808c8d4c9af, type: 2}
   - {fileID: 11400000, guid: fc7886a60a5bff844854104eb9121cf0, type: 2}
   - {fileID: 11400000, guid: 040e214db3070f84d89e3514510e8990, type: 2}
+  JokeLevels:
+  - {fileID: 11400000, guid: 22134268dcf0f224b9efb03c0fb1b5a7, type: 2}
+  - {fileID: 11400000, guid: 7ac99fa0ae634aa45a6d113d314eac99, type: 2}
   ButtonPrefab: {fileID: 132531431190409975, guid: c9da2f98c42ef814f92990caa4dfa969,
     type: 3}
   OnLevelSelected:
