@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Options;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Map.generation
 {
@@ -10,6 +13,23 @@ namespace Map.generation
 
         [SerializeField] private float Margin;
         [SerializeField] private float distanceStep;
+
+        private void Start()
+        {
+            OptionsManager.Instance.OnOptionsChange.AddListener(CheckIfGrassAllowed);
+            gameObject.SetActive(OptionsManager.Instance.AllowGrass);
+        }
+
+        private void CheckIfGrassAllowed()
+        {
+            gameObject.SetActive(OptionsManager.Instance.AllowGrass);
+        }
+
+        private void OnDestroy()
+        {
+            OptionsManager.Instance.OnOptionsChange.RemoveListener(CheckIfGrassAllowed);
+        }
+
 
         public void GenerateGrass(List<Vector3> points, MapZone zone, int StartIndex)
         {

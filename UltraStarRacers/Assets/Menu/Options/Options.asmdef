@@ -1,8 +1,10 @@
 {
-    "name": "MapGeneration",
-    "rootNamespace": "Map.generation",
+    "name": "Options",
+    "rootNamespace": "Options",
     "references": [
-        "GUID:e51e54a4a063d5442a9d217244fe50cf"
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:a96a04501cd4a5c4f8de72be64f91108",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
